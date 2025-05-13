@@ -1,0 +1,35 @@
+@import "tailwindcss";
+:root {
+  --base-bg1: #f4f0ff;
+  --base-bg2: #dacdff;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--base-bg1), var(--base-bg2));
+}
+
+.chatbot-popup {
+  overflow: hidden;
+ max-width: 500px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.chatbot-popup .chat-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #6d4fc2;
+  padding: 12px 25px;
+  align-items: center;
+}
+.chatbot-popup .chat-header .header-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
