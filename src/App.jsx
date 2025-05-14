@@ -8,7 +8,7 @@ const App = () => {
       text: "Welcome 👋 Your voice matters here.",
       sender: "bot",
       time: "10:00 AM",
-    },
+    }, 
   ]);
 
   return (
