@@ -1,6 +1,6 @@
 import React from "react";
 import UserAvatar from "../assets/ukeje -Isaac.jpg";
-import { BotIcon } from "lucide-react";
+import  Bot from "../assets/BotIcon.png";
 
 const ChatMessage = ({ chat }) => {
   const isBot = chat.role === "assistant";
@@ -9,7 +9,7 @@ const ChatMessage = ({ chat }) => {
     <div className={`message flex items-end gap-2 ${isBot ? "justify-start" : "justify-end"}`}>
       {isBot ? (
         <>
-          <BotIcon className=" bg-[#f6f2ff] rounded-full p-1 w-8 h-8" />
+        <img src={Bot} alt="Bot" className="w-8 h-8 rounded-full object-cover" />
           <p className="message-text bg-[#f6f2ff] rounded-2xl rounded-bl-none p-2 max-w-sm">
             {chat.text}
           </p>

@@ -27,7 +27,7 @@ const ChatForm = ({ setChatHistory }) => {
           headers: {
             // Authorization: `Bearer ${import.meta.env.VITE_APIKEY}`,
             Authorization: `Bearer ${import.meta.env.VITE_APIKEY}`,
-            "HTTP-Referer": "http://localhost:5173", // Replace with your live site URL
+            "HTTP-Referer": "https://affriverse-solution.vercel.app/", // Replace with your live site URL
             "X-Title": "My Civic Chatbot",
             "Content-Type": "application/json",
           },
