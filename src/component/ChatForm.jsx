@@ -1,16 +1,73 @@
 import { ChevronUpIcon } from "lucide-react";
 import { useRef } from "react";
 
-const ChatForm = ({setChatHistory}) => {
+const ChatForm = ({ setChatHistory }) => {
   const inputRef = useRef();
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const userMessage = inputRef.current.value.trim();
     if (!userMessage) return;
 
-    //Update chat history with user messsage
-    setChatHistory(history => [...history,{role:"user",text:userMessage}])
+    // Update chat history with user message
+    setChatHistory((history) => [
+      ...history,
+      { role: "user", text: userMessage },
+    ]);
+
+    // Clear input
+    inputRef.current.value = "";
+
+    // API Integration
+    try {
+      const response = await fetch(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APIKEY}`,
+            "HTTP-Referer": "http://localhost:5173", // Replace with your live domain
+            "X-Title": "My Civic Chatbot", // Replace with your site name
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "deepseek/deepseek-prover-v2:free",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "You are an Affriverse agent, well trained on matters relating to Abia state and Nigeria. Respond helpfully and factually.",
+              },
+              {
+                role: "user",
+                content: userMessage,
+              },
+            ],
+          }),
+        }
+      );
+
+      const data = await response.json();
+      const assistantReply = data?.choices?.[0]?.message?.content;
+
+      if (assistantReply) {
+        setChatHistory((history) => [
+          ...history,
+          { role: "assistant", text: assistantReply },
+        ]);
+      } else {
+        setChatHistory((history) => [
+          ...history,
+          { role: "assistant", text: "No response from model." },
+        ]);
+      }
+    } catch (error) {
+      console.error("API Error:", error);
+      setChatHistory((history) => [
+        ...history,
+        { role: "assistant", text: "Failed to fetch response." },
+      ]);
+    }
   };
 
   return (

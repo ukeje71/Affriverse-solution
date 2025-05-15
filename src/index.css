@@ -40,6 +40,9 @@ body {
   font-size: 0.9;
   white-space: pre-line;
 }
+.chat-body{
+  overflow-y: scroll;
+}
 .chat-body .bot-message .message-text {
   background-color: #f6f2ff;
   border-radius: 13px 13px 13px 13px;

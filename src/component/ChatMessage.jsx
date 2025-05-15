@@ -1,21 +1,31 @@
 import React from "react";
 import UserAvatar from "../assets/ukeje -Isaac.jpg";
-import {BotIcon} from "lucide-react";
+import { BotIcon } from "lucide-react";
 
-const ChatMessage = ({chat}) => {
+const ChatMessage = ({ chat }) => {
+  const isBot = chat.role === "assistant";
+
   return (
-    <div>
-      <div className={`message ${chat.role === "model" ? 'bot' :'user'}-message flex justify-end `}>
-        {chat.role === "model" && <BotIcon/>}
-        <p className="message-text  text-white bg-[#6d4ec2] rounded-2xl rounded-br-none">
-          {chat.text}
-        </p>
-        <img
-          src={UserAvatar}
-          alt="User Avatar"
-          className="w-8 h-8 rounded-full object-cover self-end"
-        />
-      </div>
+    <div className={`message flex items-end gap-2 ${isBot ? "justify-start" : "justify-end"}`}>
+      {isBot ? (
+        <>
+          <BotIcon className=" bg-[#f6f2ff] rounded-full p-1 w-8 h-8" />
+          <p className="message-text bg-[#f6f2ff] rounded-2xl rounded-bl-none p-2 max-w-sm">
+            {chat.text}
+          </p>
+        </>
+      ) : (
+        <>
+          <p className="message-text text-white bg-[#6d4ec2] rounded-2xl rounded-br-none p-2 max-w-sm">
+            {chat.text}
+          </p>
+          <img
+            src={UserAvatar}
+            alt="User Avatar"
+            className="w-8 h-8 rounded-full object-cover"
+          />
+        </>
+      )}
     </div>
   );
 };
