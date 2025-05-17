@@ -11,12 +11,12 @@ const App = () => {
     <div className="container">
       <div className="chatbot-popup shadow-2xl ">
         {/* Header starts here */}
-        <div className="chat-header">
+        <div className="chat-header  bg-[#AA1f2E]">
           <div className="header-info">
-           <img src ={Bot} alt="Icon" className="bg-[#6d4fc2] rounded-full self-end p-1.5" />
+           <img src ={Bot} alt="Icon" className="bg-[#FDBD3D] rounded-full self-end p-1.5 w-10"  />
 
             <h2 className="logo-text text-white text-xl font-bold">
-              Chat with your community
+              Voice matters
             </h2>
           </div>
           <button className=" rounded-sm h-10">
@@ -27,7 +27,7 @@ const App = () => {
         {/* Chat Box body starts here */}
         <div className="chat-body h-96 p-7 flex flex-col gap-4 ">
           <div className="message bot-message flex gap-1.5 items-center">
-            <img src={Bot} alt="Icon" className="bg-[#6d4fc2] rounded-full self-end p-1.5 w-10"  />
+            <img src={Bot} alt="Icon" className="bg-[#FDBD3D] rounded-full self-end p-1.5 w-10"  />
             <p className="message-text">Welcome 👋 Your voice matters. 💙</p>
           </div>
           {/* Render chat dynamically */}

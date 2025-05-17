@@ -23,7 +23,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #6d4fc2;
   padding: 12px 25px;
   align-items: center;
 }
